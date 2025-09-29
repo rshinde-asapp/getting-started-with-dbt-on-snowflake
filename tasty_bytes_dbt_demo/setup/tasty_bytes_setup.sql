@@ -61,7 +61,7 @@ file_format = asapp_dev.public.csv_ff;
 --*/
 
 -- country table build
-CREATE OR REPLACE TABLE asapp_dev.raw.country
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.country
 (
     country_id NUMBER(18,0),
     country VARCHAR(16777216),
@@ -74,7 +74,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.country
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- franchise table build
-CREATE OR REPLACE TABLE asapp_dev.raw.franchise 
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.franchise 
 (
     franchise_id NUMBER(38,0),
     first_name VARCHAR(16777216),
@@ -87,7 +87,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.franchise
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- location table build
-CREATE OR REPLACE TABLE asapp_dev.raw.location
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.location
 (
     location_id NUMBER(19,0),
     placekey VARCHAR(16777216),
@@ -100,7 +100,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.location
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- menu table build
-CREATE OR REPLACE TABLE asapp_dev.raw.menu
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.menu
 (
     menu_id NUMBER(19,0),
     menu_type_id NUMBER(38,0),
@@ -117,7 +117,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.menu
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- truck table build 
-CREATE OR REPLACE TABLE asapp_dev.raw.truck
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.truck
 (
     truck_id NUMBER(38,0),
     menu_type_id NUMBER(38,0),
@@ -137,7 +137,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.truck
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- order_header table build
-CREATE OR REPLACE TABLE asapp_dev.raw.order_header
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.order_header
 (
     order_id NUMBER(38,0),
     truck_id NUMBER(38,0),
@@ -159,7 +159,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.order_header
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- order_detail table build
-CREATE OR REPLACE TABLE asapp_dev.raw.order_detail 
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.order_detail 
 (
     order_detail_id NUMBER(38,0),
     order_id NUMBER(38,0),
@@ -174,7 +174,7 @@ CREATE OR REPLACE TABLE asapp_dev.raw.order_detail
 COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1, "minor":0}, "attributes":{"is_quickstart":1, "source":"sql"}}';
 
 -- customer loyalty table build
-CREATE OR REPLACE TABLE asapp_dev.raw.customer_loyalty
+CREATE OR REPLACE TABLE asapp_dev.rshinde_raw.customer_loyalty
 (
     customer_id NUMBER(38,0),
     first_name VARCHAR(16777216),
@@ -199,35 +199,35 @@ COMMENT = '{"origin":"sf_sit-is", "name":"tasty-bytes-dbt", "version":{"major":1
 --*/
 
 -- country table load
-COPY INTO asapp_dev.raw.country
+COPY INTO asapp_dev.rshinde_raw.country
 FROM @asapp_dev.public.s3load/raw_pos/country/;
 
 -- franchise table load
-COPY INTO asapp_dev.raw.franchise
+COPY INTO asapp_dev.rshinde_raw.franchise
 FROM @asapp_dev.public.s3load/raw_pos/franchise/;
 
 -- location table load
-COPY INTO asapp_dev.raw.location
+COPY INTO asapp_dev.rshinde_raw.location
 FROM @asapp_dev.public.s3load/raw_pos/location/;
 
 -- menu table load
-COPY INTO asapp_dev.raw.menu
+COPY INTO asapp_dev.rshinde_raw.menu
 FROM @asapp_dev.public.s3load/raw_pos/menu/;
 
 -- truck table load
-COPY INTO asapp_dev.raw.truck
+COPY INTO asapp_dev.rshinde_raw.truck
 FROM @asapp_dev.public.s3load/raw_pos/truck/;
 
 -- customer_loyalty table load
-COPY INTO asapp_dev.raw.customer_loyalty
+COPY INTO asapp_dev.rshinde_raw.customer_loyalty
 FROM @asapp_dev.public.s3load/raw_customer/customer_loyalty/;
 
 -- order_header table load
-COPY INTO asapp_dev.raw.order_header
+COPY INTO asapp_dev.rshinde_raw.order_header
 FROM @asapp_dev.public.s3load/raw_pos/order_header/;
 
 -- order_detail table load
-COPY INTO asapp_dev.raw.order_detail
+COPY INTO asapp_dev.rshinde_raw.order_detail
 FROM @asapp_dev.public.s3load/raw_pos/order_detail/;
 
 -- setup completion note
