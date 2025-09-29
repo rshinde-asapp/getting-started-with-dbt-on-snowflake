@@ -7,7 +7,7 @@ tasty_bytes:
       user: 'not needed'
       role: TEAM_DATA_ENGINEERING
       database: ASAPP_DEV
-      schema: dev
+      schema: RSHINDE_DEV
       warehouse: ASAPP_DEV
     prod:
       type: snowflake
@@ -15,5 +15,5 @@ tasty_bytes:
       user: 'not needed'
       role: TEAM_DATA_ENGINEERING
       database: ASAPP_DEV
-      schema: prod
+      schema: RSHINDE_PROD
       warehouse: ASAPP_DEV
